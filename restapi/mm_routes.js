@@ -45,6 +45,16 @@ router.get('/mattermost-app.json', (req, res) => {
     });
 });
 
+router.get('/bindings', (req, res) => {
+    fs.readFile('bindings.json', (err, data) => {
+        if (err) {
+            throw err;
+        }
+        const bindings = JSON.parse(data);
+        res.json(bindings);
+    });
+});
+
 router.get('/install', (req, res) => {
     http.installApp();
     const manifest = '/install post';

@@ -1,0 +1,14 @@
+[
+  {
+    "location_id": "/post_menu",
+    "bindings": [
+      {
+      "label":    "Create zendesk ticket",
+      "description": "Create ticket in zendesk",
+      "call": {
+          "url": "http://localhost:4000/create"
+      }
+      }
+    ]
+  } 
+]
