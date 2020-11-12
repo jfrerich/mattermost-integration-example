@@ -3,12 +3,18 @@
     "location_id": "/post_menu",
     "bindings": [
       {
-      "label":    "Create zendesk ticket",
-      "description": "Create ticket in zendesk",
-      "call": {
-          "url": "http://localhost:4000/create"
-      }
+        "label": "Create Zendesk Ticket",
+        "description": "Create ticket in zendesk",
+        "icon": "https://raw.githubusercontent.com/jfrerich/mattermost-applet-zendesk/initial-PR-patch1/assets/zendesk.svg",
+        "call": {
+          "url": "https://jasonf.ngrok.io/openform",
+          "type": "form",
+          "expand": {
+            "app": "",
+            "post": "All"
+          }
+        }
       }
     ]
-  } 
+  }
 ]

@@ -18,21 +18,33 @@ router.post('/post', async (req, res) => {
     res.json({});
 });
 
-router.post('/submission', async (req, res) => {
-    const {subject, description, type, post_id} = req.body.submission;
-    const {channel_id, user_id} = req.body;
+router.post('/openform', (req, res) => {
+    // const {acting_user_id, post_id, team_id, channel_id} = req.body.context;
 
+    fs.readFile('open_form.json', (err, data) => {
+        if (err) {
+            throw err;
+        }
+        const manifest = JSON.parse(data);
+        manifest.form.fields[1].value = req.body.context.post.message;
+
+        res.json(manifest);
+    });
+});
+
+router.post('/create', (req, res) => {
+    const {acting_user_id, post_id, team_id, channel_id} = req.body.context;
     const ticket = {
         ticket: {
-            type,
-            subject,
+            subject: 'Ticket Created from Mattermost',
             comment: {
-                body: description,
+                body: 'this is the description',
             },
         },
     };
 
-    app.createTicketFromPost(ticket, channel_id, user_id, post_id);
+    app.createTicketFromPost(ticket, channel_id, acting_user_id, post_id);
+    res.sendStatus(200);
 });
 
 router.get('/mattermost-app.json', (req, res) => {
