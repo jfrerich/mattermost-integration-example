@@ -1,10 +1,11 @@
-require('dotenv').config();
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+import dotenv from 'dotenv';
+dotenv.config()
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
 
-const zdRoutes = require('./restapi/zd_routes');
-const mmRoutes = require('./restapi/mm_routes');
+import zdRoutes from  './restapi/zd_routes';
+import mmRoutes from  './restapi/mm_routes';
 
 const app = express();
 app.use(cors({origin: 'http://localhost:8065', credentials: true}));

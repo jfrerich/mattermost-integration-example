@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
 module.exports.openInteractiveDialog = async (dialog) => {
     const host = process.env.MM_URL || 'http://localhost:8065';
