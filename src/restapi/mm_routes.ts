@@ -57,23 +57,4 @@ router.get('/install', (req: Request, res: Response) => {
     res.send(manifest);
 });
 
-// router.post('/trigger/create', async (req, res) => {
-//     client.triggers.create();
-// });
-
-router.post('/notify/user_left_channel', async (req: Request, res: Response) => {
-    // const post = await Client4.getPost(req.body.values.post_id);
-    console.log('req', req);
-    res.send('user XXX left channel XXX');
-
-    // res.json({"user XXX join the channel"});
-});
-
-router.post('/notify/user_joined_channel', async (req: Request, res: Response) => {
-    // const post = await Client4.getPost(req.body.values.post_id);
-    console.log('req', req);
-    res.send('user XXX joined channel XXX');
-    res.json({});
-});
-
 export default router;
