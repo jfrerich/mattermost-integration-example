@@ -1,13 +1,18 @@
-import zdClient from '../zendesk/client';
+import zendeskClient from '../zendesk/client';
 import mmClient from '../mattermost/client';
 
 import fs from 'fs';
 
 import { Post } from 'mattermost-redux/types/posts'
 
+const username = process.env.ZENDESK_USERNAME as string;
+const token = process.env.ZENDESK_API_TOKEN as string;
+const apiURL = process.env.ZENDESK_URL + '/api/v2' as string;
+
 class App {
     // createTicketFromPost
     async createTicketFromPost(ticket, channelId: string, userId: string, postId: string) {
+        const zdClient = zendeskClient(username, token, apiURL)
         const result = await zdClient.tickets.create(ticket);
         const user = await zdClient.users.show(result.requester_id);
         const host = process.env.ZENDESK_URL;
