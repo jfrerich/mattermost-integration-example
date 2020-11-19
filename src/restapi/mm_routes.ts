@@ -7,10 +7,6 @@ import http from '../app/http';
 
 const router = express.Router();
 
-router.get('/', (req: Request, res) => {
-    res.send('Matterost!');
-});
-
 router.post('/createform', (req: Request, res: Response) => {
     if (req.body.type == 'form') {
         // const formData = app.getCreateForm(req.body.context.post.message)
